@@ -1,30 +1,72 @@
-export const config = {
-
+export const config: WebdriverIO.Config = {
+    //
+    // ====================
+    // Runner Configuration
+    // ====================
+    // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-    port: 4723,
+    tsConfigPath: './tsconfig.json',
     
+    //
+    // ==================
+    // Specify Test Files
+    // ==================
+    // Define which test specs should run. The pattern is relative to the directory
+    // of the configuration file being run.
+    //
+    // The specs are defined as an array of spec files (optionally using wildcards
+    // that will be expanded). The test for each spec file will be run in a separate
+    // worker process. In order to have a group of spec files run in the same worker
+    // process simply enclose them in an array within the specs array.
+    //
+    // The path of the spec files will be resolved relative from the directory of
+    // of the config file unless it's absolute.
+    //
     specs: [
-        './test/specs/**/*.js'
+        // ToDo: define location for spec files here
     ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
- 
-    maxInstances: 1,
-
+    //
+    // ============
+    // Capabilities
+    // ============
+    // Define your capabilities here. WebdriverIO can run multiple capabilities at the same
+    // time. Depending on the number of capabilities, WebdriverIO launches several test
+    // sessions. Within your capabilities you can overwrite the spec and exclude options in
+    // order to group specific specs to a specific capability.
+    //
+    // First, you can define how many instances should be started at the same time. Let's
+    // say you have 3 different capabilities (Chrome, Firefox, and Safari) and you have
+    // set maxInstances to 1; wdio will spawn 3 processes. Therefore, if you have 10 spec
+    // files and you set maxInstances to 10, all spec files will get tested at the same time
+    // and 30 processes will get spawned. The property handles how many capabilities
+    // from the same test should run tests.
+    //
+    maxInstances: 10,
+    //
+    // If you have trouble getting all important capabilities together, check out the
+    // Sauce Labs platform configurator - a great tool to configure your capabilities:
+    // https://saucelabs.com/platform/platform-configurator
+    //
     capabilities: [{
-    platformName: 'Android',
-    'appium:platformVersion': '9.0',
-    'appium:deviceName': 'ebac-qe',
-    'appium:automationName': 'UiAutomator2',
-    'appium:app': `${process.cwd()}/app/android/ebac.shop.apks`, 
-    'appium:appWaitActivity': '.MainActivity', 
-    'appium:disableIdLocationAutocompletion': true
-}],
+        // capabilities for local Appium web tests on an Android Emulator
+        platformName: 'Android',
+        browserName: 'Chrome',
+        'appium:deviceName': 'Android GoogleAPI Emulator',
+        'appium:platformVersion': '12.0',
+        'appium:automationName': 'UiAutomator2'
+    }],
 
-
-  
+    //
+    // ===================
+    // Test Configurations
+    // ===================
+    // Define all options that are relevant for the WebdriverIO instance here
+    //
+    // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
     //
     // Set specific log levels per logger

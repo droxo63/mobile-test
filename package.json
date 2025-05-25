@@ -6,7 +6,9 @@
     "@wdio/local-runner": "^9.14.0",
     "@wdio/mocha-framework": "^9.14.0",
     "@wdio/spec-reporter": "^9.14.0",
-    "appium-uiautomator2-driver": "^4.2.3"
+    "appium-uiautomator2-driver": "^4.2.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "version": "1.0.0",
   "main": "index.js",
@@ -282,7 +284,7 @@
     "zip-stream": "^6.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wdio run .wdio.conf.js"
   },
   "keywords": [],
   "author": "",
