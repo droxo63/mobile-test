@@ -5,7 +5,14 @@ import { $ } from '@wdio/globals'
 class ProfilePage {
 
     async profileName (name) { 
-        return await $('id:profile-name') 
+        return await $('//android.widget.TextView[@text="+${name}+"]'); 
+    }
+    get signUpButton() {
+    return $('//android.widget.TextView[@text="Sign up"]');
+}
+
+ async goToSignUp() {
+        await this.signUpButton.click();
     }
 }
 

@@ -1,7 +1,7 @@
 import { expect, driver } from '@wdio/globals'
-import loginPage from '../pageobjects/login.page'
-import homePage from '../pageobjects/home.page'
-import profilePage from '../pageobjects/profile.page'
+import loginPage from '../pageobjects/login.page.js'
+import homePage from '../pageobjects/home.page.js'
+import profilePage from '../pageobjects/profile.page.js'
 
 
 describe('My Login application', () => {

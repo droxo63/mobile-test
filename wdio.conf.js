@@ -1,8 +1,17 @@
 export const config = {
 
-    runner: 'local',
-    port: 4723,
-    
+   // runner: 'local',
+    //port: 4723,
+
+    const driver = await remote({
+  user: 'oauth-droxo63-b54f2',
+  key: '2e1297dc-85b0-4a0c-97fa-1a206d10f245',
+  hostname: 'ondemand.us-west-1.saucelabs.com',
+  port: 443,
+  baseUrl: 'wd/hub',
+  capabilities,
+});
+
     specs: [
         './test/specs/**/*.js'
     ],
@@ -11,17 +20,21 @@ export const config = {
         // 'path/to/excluded/files'
     ],
  
-    maxInstances: 1,
+    maxInstances: 1,a
 
-    capabilities: [{
-    platformName: 'Android',
-    'appium:platformVersion': '9.0',
-    'appium:deviceName': 'ebac-qe',
-    'appium:automationName': 'UiAutomator2',
-    'appium:app': `${process.cwd()}/app/android/ebac.shop.apks`, 
-    'appium:appWaitActivity': '.MainActivity', 
-    'appium:disableIdLocationAutocompletion': true
-}],
+    const capabilities = {
+ platformName: 'Android',
+ 'appium:app': 'storage:filename=ebacshop.aab', 
+ 'appium:deviceName': 'Samsung.*',
+ 'appium:platformVersion': '10',
+ 'appium:automationName': 'UiAutomator2',
+ 'sauce:options': {
+    build: 'appium-build-teste-ebacshop',
+    name: '<Ebac Shop Test>',
+    deviceOrientation: 'PORTRAIT',
+    appiumVersion: 'stable'
+  },
+};
 
 
   
